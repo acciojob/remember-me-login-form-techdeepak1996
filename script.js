@@ -21,28 +21,28 @@ function displayLoggedInAlert(username) {
 }
 
 // Function to handle form submission
-document.getElementById('login-form').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent form submission
-
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
-  const rememberMeChecked = document.getElementById('checkbox').checked;
-
-  if (username && password) { // Check if username and password are entered
-    if (rememberMeChecked) {
-      saveLoginDetails(username, password);
-    } else {
-      removeLoginDetails();
-    }
-
-    displayLoggedInAlert(username);
-  } else {
-    alert('Please enter both username and password.');
-  }
-});
-
-// Check if there are saved login details
 window.onload = function() {
+  document.getElementById('login-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent form submission
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const rememberMeChecked = document.getElementById('checkbox').checked;
+
+    if (username && password) { // Check if username and password are entered
+      if (rememberMeChecked) {
+        saveLoginDetails(username, password);
+      } else {
+        removeLoginDetails();
+      }
+
+      displayLoggedInAlert(username);
+    } else {
+      alert('Please enter both username and password.');
+    }
+  });
+
+  // Check if there are saved login details
   if (checkExistingLoginDetails()) {
     const existingButton = document.createElement('button');
     existingButton.id = 'existing';
