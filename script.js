@@ -26,18 +26,15 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   // Check if there are saved details in local storage
-const savedUsername = localStorage.getItem("username");
-if (savedUsername && !document.getElementById("existing")) {
-  // Create a button to login as an existing user
-  const existingButton = document.createElement("button");
-  existingButton.id = "existing"; 
-  existingButton.textContent = "Login as existing user";
-  existingButton.addEventListener("click", function() {
-    // Show an alert with the logged in username
-    alert(`Logged in as ${savedUsername}`);
-  });
-  form.appendChild(existingButton);
-}
-  form.appendChild(existingButton);
-}
+  const savedUsername = localStorage.getItem("username");
+  if (savedUsername) {
+    // Create a button to login as an existing user
+    const existingButton = document.createElement("button");
+    existingButton.textContent = "Login as existing user";
+    existingButton.addEventListener("click", function() {
+      // Show an alert with the logged in username
+      alert(`Logged in as ${savedUsername}`);
+    });
+    form.appendChild(existingButton);
+  }
 });
