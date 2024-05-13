@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
   const usernameInput = document.getElementById("username");
   const passwordInput = document.getElementById("password");
   const rememberCheckbox = document.getElementById("checkbox");
+  const existingButton = document.getElementById("existing"); // Get the existing user button
 
   // Function to handle form submission
   form.addEventListener("submit", function(event) {
@@ -28,13 +29,11 @@ document.addEventListener("DOMContentLoaded", function() {
   // Check if there are saved details in local storage
   const savedUsername = localStorage.getItem("username");
   if (savedUsername) {
-    // Create a button to login as an existing user
-    const existingButton = document.createElement("button");
-    existingButton.textContent = "Login as existing user";
+    // Show the existing user button
+    existingButton.style.display = "block";
     existingButton.addEventListener("click", function() {
       // Show an alert with the logged in username
       alert(`Logged in as ${savedUsername}`);
     });
-    form.appendChild(existingButton);
   }
 });
